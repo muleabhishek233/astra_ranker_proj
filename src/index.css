@@ -1,7 +1,249 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  /* Apple design tokens */
+  --color-apple-blue: #0066cc;
+  --color-apple-blue-focus: #0071e3;
+  --color-apple-blue-dark: #2997ff;
+  --color-apple-ink: #1d1d1f;
+  --color-apple-ink-muted: #7a7a7a;
+  --color-apple-ink-strong: #333333;
+  --color-apple-canvas: #ffffff;
+  --color-apple-parchment: #f5f5f7;
+  --color-apple-pearl: #fafafc;
+  --color-apple-tile-dark: #272729;
+  --color-apple-tile-dark-2: #2a2a2c;
+  --color-apple-nav: #000000;
+  --color-apple-hairline: #e0e0e0;
+  --color-apple-divider: #f0f0f0;
+
+  --font-sans: "SF Pro Display", "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  --font-mono: "SF Mono", "Menlo", ui-monospace, monospace;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+}
+
+/* Apple pill button */
+.btn-apple-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #0066cc;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  border-radius: 9999px;
+  padding: 11px 22px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  text-decoration: none;
+}
+.btn-apple-primary:active {
+  transform: scale(0.95);
+}
+.btn-apple-primary:disabled {
+  background-color: #e0e0e0;
+  color: #7a7a7a;
+  cursor: not-allowed;
+}
+.btn-apple-primary:focus {
+  outline: 2px solid #0071e3;
+  outline-offset: 2px;
+}
+
+/* Apple secondary ghost pill */
+.btn-apple-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  color: #0066cc;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.374px;
+  border-radius: 9999px;
+  padding: 11px 22px;
+  border: 1px solid #0066cc;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.btn-apple-secondary:active {
+  transform: scale(0.95);
+}
+
+/* Apple nav */
+.apple-global-nav {
+  background-color: rgba(0, 0, 0, 0.92);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  height: 44px;
+}
+
+/* Apple sub-nav frosted */
+.apple-sub-nav {
+  background-color: rgba(245, 245, 247, 0.80);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Apple tile sections */
+.apple-tile-light {
+  background-color: #ffffff;
+}
+.apple-tile-parchment {
+  background-color: #f5f5f7;
+}
+.apple-tile-dark {
+  background-color: #272729;
+  color: #ffffff;
+}
+
+/* Apple display typography */
+.apple-hero {
+  font-family: "SF Pro Display", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+  color: #1d1d1f;
+}
+.apple-display-lg {
+  font-family: "SF Pro Display", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #1d1d1f;
+}
+.apple-display-md {
+  font-family: "SF Pro Text", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: 0.196px;
+  color: #1d1d1f;
+}
+.apple-tagline {
+  font-family: "SF Pro Display", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+}
+.apple-body {
+  font-family: "SF Pro Text", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+}
+.apple-body-strong {
+  font-family: "SF Pro Text", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.374px;
+}
+.apple-caption {
+  font-family: "SF Pro Text", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.224px;
+  color: #7a7a7a;
+}
+.apple-caption-strong {
+  font-family: "SF Pro Text", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
+}
+.apple-nav-link {
+  font-family: "SF Pro Text", system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.12px;
+  color: rgba(255,255,255,0.86);
+}
+
+/* Apple store utility card */
+.apple-utility-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+/* Text links */
+.apple-link {
+  color: #0066cc;
+  text-decoration: none;
+}
+.apple-link:hover {
+  text-decoration: underline;
+}
+.apple-link-dark {
+  color: #2997ff;
+  text-decoration: none;
+}
+
+/* Apple range slider */
+input[type="range"].apple-range {
+  -webkit-appearance: none;
+  height: 2px;
+  background: #e0e0e0;
+  border-radius: 9999px;
+  outline: none;
+}
+input[type="range"].apple-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #0066cc;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+}
+
+/* Scrollbar minimal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 9999px;
+}
+
+/* Modal slide-in animation */
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.animate-slide-in {
+  animation: slide-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Selection */
+::selection {
+  background-color: #0066cc;
+  color: #fff;
 }
