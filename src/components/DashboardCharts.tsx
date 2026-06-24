@@ -4,20 +4,20 @@
  */
 
 import React from "react";
-import { 
-  ResponsiveContainer, 
-  RadarChart, 
-  PolarGrid, 
-  PolarAngleAxis, 
-  PolarRadiusAxis, 
-  Radar, 
-  BarChart, 
-  CartesianGrid, 
-  XAxis, 
-  YAxis, 
-  Tooltip, 
-  Bar, 
-  Cell 
+import {
+  ResponsiveContainer,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Radar,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar,
+  Cell,
 } from "recharts";
 import { ScoreBreakdown } from "../types";
 
@@ -27,33 +27,41 @@ interface RadarChartProps {
 
 export const CandidateScoreRadar: React.FC<RadarChartProps> = ({ score }) => {
   const data = [
-    { subject: "Skills (35%)", value: score.skill_score, fullMark: 100 },
-    { subject: "Experience (20%)", value: score.experience_score, fullMark: 100 },
-    { subject: "Semantic similarity (20%)", value: score.semantic_score, fullMark: 100 },
-    { subject: "Profile Quality (15%)", value: score.quality_score, fullMark: 100 },
-    { subject: "Availability (10%)", value: score.availability_score, fullMark: 100 },
+    { subject: "Skills", value: score.skill_score, fullMark: 100 },
+    { subject: "Experience", value: score.experience_score, fullMark: 100 },
+    { subject: "Semantic", value: score.semantic_score, fullMark: 100 },
+    { subject: "Quality", value: score.quality_score, fullMark: 100 },
+    { subject: "Availability", value: score.availability_score, fullMark: 100 },
   ];
 
   return (
-    <div id="radar-container" className="w-full h-64 flex items-center justify-center bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-xl p-2">
+    <div style={{
+      width: "100%", height: 220,
+      background: "#f5f5f7",
+      border: "1px solid #f0f0f0",
+      borderRadius: 12,
+      padding: 8,
+      display: "flex", alignItems: "center", justifyContent: "center",
+    }}>
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-          <PolarGrid stroke="#e4e4e7" />
-          <PolarAngleAxis 
-            dataKey="subject" 
-            tick={{ fill: '#71717a', fontSize: 10, fontWeight: 500 }}
+        <RadarChart cx="50%" cy="50%" outerRadius="75%" data={data}>
+          <PolarGrid stroke="#e0e0e0" />
+          <PolarAngleAxis
+            dataKey="subject"
+            tick={{ fill: "#7a7a7a", fontSize: 10, fontWeight: 500 }}
           />
-          <PolarRadiusAxis 
-            angle={30} 
-            domain={[0, 100]} 
-            tick={{ fill: '#a1a1aa', fontSize: 8 }}
+          <PolarRadiusAxis
+            angle={30}
+            domain={[0, 100]}
+            tick={{ fill: "#cccccc", fontSize: 8 }}
           />
           <Radar
-            name="Score Breakdown"
+            name="Score"
             dataKey="value"
-            stroke="#2563eb"
-            fill="#3b82f6"
-            fillOpacity={0.25}
+            stroke="#0066cc"
+            fill="#0066cc"
+            fillOpacity={0.15}
+            strokeWidth={1.5}
           />
         </RadarChart>
       </ResponsiveContainer>
@@ -67,32 +75,38 @@ interface CompareScoresProps {
 
 export const ScoreBarComparison: React.FC<CompareScoresProps> = ({ scores }) => {
   return (
-    <div id="comparison-container" className="w-full h-48 bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl p-2">
+    <div style={{
+      width: "100%", height: 192,
+      background: "#f5f5f7",
+      border: "1px solid #f0f0f0",
+      borderRadius: 12,
+      padding: 8,
+    }}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={scores} margin={{ top: 10, right: 10, left: -20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4e4e7" />
-          <XAxis 
-            dataKey="name" 
-            tick={{ fill: '#71717a', fontSize: 10 }}
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e0e0e0" />
+          <XAxis
+            dataKey="name"
+            tick={{ fill: "#7a7a7a", fontSize: 10 }}
             axisLine={false}
             tickLine={false}
           />
-          <YAxis 
-            domain={[0, 100]} 
-            tick={{ fill: '#a1a1aa', fontSize: 9 }}
+          <YAxis
+            domain={[0, 100]}
+            tick={{ fill: "#cccccc", fontSize: 9 }}
             axisLine={false}
             tickLine={false}
           />
-          <Tooltip 
-            contentStyle={{ 
-              backgroundColor: '#18181b', 
-              border: 'none', 
-              borderRadius: '8px',
-              color: '#fff',
-              fontSize: '11px'
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "#1d1d1f",
+              border: "none",
+              borderRadius: 10,
+              color: "#fff",
+              fontSize: 11,
             }}
           />
-          <Bar dataKey="value" radius={[4, 4, 0, 0]} maxBarSize={30}>
+          <Bar dataKey="value" radius={[4, 4, 0, 0]} maxBarSize={28}>
             {scores.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.fill} />
             ))}
